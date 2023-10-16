@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv2ta3a87gpas"
+path="res://.godot/imported/Teddy and Marge - Dark Eyes.mp3-c3d02967b0e272038e7191801227b9ef.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Teddy and Marge - Dark Eyes.mp3"
+dest_files=["res://.godot/imported/Teddy and Marge - Dark Eyes.mp3-c3d02967b0e272038e7191801227b9ef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

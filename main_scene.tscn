@@ -1,3 +1,86 @@
-[gd_scene format=3 uid="uid://b1fnauqqck2ge"]
+[gd_scene load_steps=21 format=3 uid="uid://c61yf06stf31t"]
+
+[ext_resource type="PackedScene" uid="uid://ccskpljh0nbsx" path="res://background_scene.tscn" id="1_xq080"]
+[ext_resource type="Texture2D" uid="uid://5two5dduad6k" path="res://Assets/Images/fond.png" id="2_2lqkt"]
+[ext_resource type="Texture2D" uid="uid://8fjxeaeukcm0" path="res://Assets/Images/chien_bouge_pas.png" id="3_p7ja3"]
+[ext_resource type="Script" path="res://Dog.gd" id="4_qn2ku"]
+[ext_resource type="Texture2D" uid="uid://digocl2fd33nb" path="res://Assets/Images/typedroite.png" id="4_ww7iu"]
+[ext_resource type="Texture2D" uid="uid://bbyhhg8kh20n7" path="res://Assets/Images/corbeau_droit.png" id="5_esqwu"]
+[ext_resource type="Script" path="res://GraveKeeper.gd" id="5_uvu8y"]
+[ext_resource type="Script" path="res://Crow.gd" id="6_1di6a"]
+[ext_resource type="PackedScene" uid="uid://4dttcu3vs3na" path="res://ui.tscn" id="8_gvuqx"]
+[ext_resource type="FontFile" uid="uid://bwightba2dsf2" path="res://Assets/Fonts/ZaiOlivettiLettera22Typewriter-rg5BK.ttf" id="9_u3qho"]
+[ext_resource type="Script" path="res://Score.gd" id="10_s8m16"]
+[ext_resource type="PackedScene" uid="uid://b5cjbhvqgy8ok" path="res://audio.tscn" id="12_1ccd2"]
+[ext_resource type="AudioStream" uid="uid://dv2ta3a87gpas" path="res://Assets/Music/Teddy and Marge - Dark Eyes.mp3" id="12_4cvcs"]
+[ext_resource type="Script" path="res://mainTheme.gd" id="13_ag0ot"]
+[ext_resource type="AudioStream" uid="uid://cncr0tljmldmx" path="res://Assets/Music/eating.mp3" id="15_f6lum"]
+[ext_resource type="Script" path="res://eating.gd" id="16_20rn5"]
+[ext_resource type="Script" path="res://crowAlert.gd" id="17_m7hqt"]
+[ext_resource type="AudioStream" uid="uid://bovma15llhmlb" path="res://Assets/Music/child.mp3" id="18_xw3u1"]
+[ext_resource type="Script" path="res://child.gd" id="19_d1x3c"]
+[ext_resource type="Script" path="res://restart.gd" id="20_tvib7"]
 
 [node name="MainScene" type="Node2D"]
+
+[node name="GameScene" parent="." instance=ExtResource("1_xq080")]
+position = Vector2(484, 326)
+
+[node name="Background" type="Sprite2D" parent="GameScene"]
+position = Vector2(100, 10)
+scale = Vector2(0.613021, 0.618518)
+texture = ExtResource("2_2lqkt")
+
+[node name="Dog" type="Sprite2D" parent="GameScene"]
+position = Vector2(-204, 186)
+scale = Vector2(0.453968, 0.594828)
+texture = ExtResource("3_p7ja3")
+script = ExtResource("4_qn2ku")
+
+[node name="Crow" type="Sprite2D" parent="GameScene"]
+position = Vector2(149.465, -232.75)
+scale = Vector2(0.839394, 0.839394)
+texture = ExtResource("5_esqwu")
+script = ExtResource("6_1di6a")
+changingStateProbability = 3
+
+[node name="graveKeeper" type="Sprite2D" parent="GameScene"]
+position = Vector2(468, 66)
+scale = Vector2(0.659292, 0.659292)
+texture = ExtResource("4_ww7iu")
+script = ExtResource("5_uvu8y")
+
+[node name="UI" parent="." instance=ExtResource("8_gvuqx")]
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 576.0
+offset_right = 1133.0
+offset_bottom = 694.0
+theme_override_fonts/font = ExtResource("9_u3qho")
+theme_override_font_sizes/font_size = 63
+text = "
+0"
+horizontal_alignment = 2
+script = ExtResource("10_s8m16")
+
+[node name="Audio" parent="." instance=ExtResource("12_1ccd2")]
+
+[node name="mainThelme" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("12_4cvcs")
+script = ExtResource("13_ag0ot")
+
+[node name="eating" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("15_f6lum")
+script = ExtResource("16_20rn5")
+
+[node name="crowAlert" type="AudioStreamPlayer2D" parent="Audio"]
+script = ExtResource("17_m7hqt")
+
+[node name="child" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("18_xw3u1")
+script = ExtResource("19_d1x3c")
+
+[node name="restart" type="AudioStreamPlayer2D" parent="Audio"]
+script = ExtResource("20_tvib7")
